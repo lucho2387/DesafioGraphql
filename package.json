@@ -1,0 +1,32 @@
+{
+  "name": "ejemplo-servidor-mongodb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./src/server.js",
+  "scripts": {
+    "start": "node ./src/server.js",
+    "test": "mocha ./src/test/test.js",
+    "testCliente": "node ./src/test/clientehttp.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "compression": "^1.7.4",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.32.0",
+    "express": "^4.17.1",
+    "express-graphql": "^0.12.0",
+    "graphql": "^16.5.0",
+    "helmet": "^4.6.0",
+    "mongoose": "^5.13.2",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
+    "nodemon": "^2.0.9",
+    "supertest": "^6.2.4"
+  }
+}
