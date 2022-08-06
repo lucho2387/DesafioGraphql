@@ -1,12 +1,14 @@
 const mongoose = require('mongoose');
 const conexionDB = require('../../config/conexionMongo')
+const Product = require('../model/product')
 
 conexionDB()
 
 class ProductsBaseDAO {
     
     constructor(collection, schema) {
-        this.collection = mongoose.model(collection, schema);
+        // this.collection = mongoose.model(collection, schema);
+        this.collection = Product;
     }
 
 
