@@ -1,21 +1,15 @@
-const config = require('./config/config')
 const express = require('express');
+const app = express();
+const config = require('./config/config')
 const helmet = require('helmet');
 const compression = require('compression');
 const logger = require('morgan');
+const GraphqlRouter = require('./routes/graphql');
 const ProductsRouter = require('./routes/products');
-const GraphqlRouter = require('./routes/graphql1');
-// const dotenv = require('dotenv');
-
-// dotenv.config();
-
-const app = express();
-
 
 
 app.use(logger('dev'));
 app.use(compression());
-app.use(helmet());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
@@ -25,17 +19,13 @@ app.use((err, req, res, next) => {
     return res.status(500).send('Algo se rompio!');
 });
 
-
-if (config.NODE_ENV === 'development') {
-    const graphqlRouter = new GraphqlRouter()
-    app.use('/api', graphqlRouter.start());
-} else {
-    const productRouter = new ProductsRouter()
-    app.use('/api', productRouter.start());
-}
-
-
 const PORT = config.PORT || 8080;
+
+const graphqlRouter = new GraphqlRouter()
+const productRouter = new ProductsRouter()
+
+app.use('/api', graphqlRouter.start());
+app.use('/api', productRouter.start());
 
 const server = app.listen(PORT, () => {
     console.log(
@@ -46,4 +36,3 @@ const server = app.listen(PORT, () => {
 server.on('error', error => {
     console.log('error en el servidor:', error);
 });
-
