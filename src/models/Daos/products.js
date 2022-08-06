@@ -7,7 +7,6 @@ conexionDB()
 class ProductsBaseDAO {
     
     constructor(collection, schema) {
-        // this.collection = mongoose.model(collection, schema);
         this.collection = Product;
     }
 
