@@ -1,7 +1,6 @@
 const express = require('express');
 const app = express();
 const config = require('./config/config')
-const helmet = require('helmet');
 const compression = require('compression');
 const logger = require('morgan');
 const GraphqlRouter = require('./routes/graphql');
