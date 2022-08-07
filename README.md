@@ -1,4 +1,4 @@
-<!-- GRAPHQL 
+// GRAPHQL 
 // Nuevo Producto
   mutation {
     createProduct(nombre: "Camra Inalambrica", descripcion: "asdasdasd", codigo: "020" , imagen: "https://http2.mlstatic.com/D_NQ_NP_835568-MLA48771299156_012022-O.webp", precio: 15000, stock: 5){
@@ -52,4 +52,4 @@
         nombre
       }
   }
--->
+
