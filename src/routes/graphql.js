@@ -2,7 +2,7 @@ const express = require('express');
 const { graphqlHTTP } = require('express-graphql')
 const { makeExecutableSchema }  = require('@graphql-tools/schema')
 const typeDefs = require('../models/model/graphql')
-const resolvers  = require('../models/Daos/resolvers')
+const resolvers  = require('../controllers/resolvers')
 const router = express.Router();
 
 const schema = makeExecutableSchema({
