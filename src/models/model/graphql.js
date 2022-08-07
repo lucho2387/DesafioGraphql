@@ -11,13 +11,26 @@ const typeDefs =`
 
     type Query {
         allProducts: [Product!]!
+        productById(_id: String): Product
+    }
+
+    input ProductData {
+        nombre: String
+        descripcion: String
+        codigo: String
+        imagen: String
+        precio: Int
+        stock: Int
     }
 
     type Mutation {
         createProduct(nombre: String, descripcion: String,  codigo: String, imagen: String, precio: Int, stock: Int): Product!
-        productById(_id: String): Product
+        productUpdate(_id: String, input: ProductData): Product
         productDeleteById(_id: String): Product
     }
 `;
 
 module.exports = typeDefs 
+
+
+ 
