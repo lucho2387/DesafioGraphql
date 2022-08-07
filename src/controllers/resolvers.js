@@ -5,7 +5,12 @@ const resolvers = {
         allProducts: async (parent, args) => {
             const products = await Product.find()
             return products
-        }
+        },
+
+        productById: async (parent, args) => {
+            const products = await Product.findById(args._id)
+            return products
+        },
     },
     Mutation: {
         createProduct: async (parent, args) => {
@@ -14,15 +19,14 @@ const resolvers = {
             return product
         },
 
-        productById: async (parent, args) => {
-            const products = await Product.findById(args._id)
-            return products
+        productUpdate: async (parent, args) => {
+            const { _id, input } = args
+            return await Product.findByIdAndUpdate({_id}, input, {new: true})
         },
 
         productDeleteById: async (parent, args) => {
             const { _id } = args
-            const productsDelete = await Product.deleteOne({_id})
-            return productsDelete
+            return await Product.findByIdAndDelete({_id})
         }
     }
 }
